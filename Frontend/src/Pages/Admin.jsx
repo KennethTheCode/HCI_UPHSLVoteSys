@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar2 from '../Components/Navbar2'
-import PagerHeader from '../Components/PageHeader'
+import PageHeader from '../Components/PageHeader'
 import PageHeader2 from '../Components/PageHeader2'
 import ControlPanel from '../Components/ControlPanel'
 import AdminBody from '../Components/AdminBody'
@@ -9,7 +9,6 @@ function Admin() {
   return (
     <div>
         <Navbar2 />
-        <PagerHeader />
         <PageHeader2 Header="Admin Panel" />
         <ControlPanel />
         <AdminBody />

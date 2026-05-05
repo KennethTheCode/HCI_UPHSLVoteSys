@@ -11,9 +11,9 @@ function Navbar() {
             <img src={Logo} alt="Logo" className='h-full w-full object-contain' />
         </div>
         <div className='h-[8vh] w-[40vh] flex items-center justify-center gap-9 text-white font-bold text-[2vh] rounded'>
-            <p>Home</p>
-            <p>Guide</p>
-            <p>Privacy Statement</p>
+            <p className='hover:text-gray-200 transition-colros duration-300'>Home</p>
+            <p className='hover:text-gray-200 transition-colros duration-300'>Guide</p>
+            <p className='hover:text-gray-200 transition-colros duration-300'>Privacy Statement</p>
             <div className='w-[7vh] border-l border-white flex justify-end'>
             <span className="material-symbols-outlined">
                 person
