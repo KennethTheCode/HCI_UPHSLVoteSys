@@ -10,12 +10,12 @@ function Navbar() {
         <div className='h-[8vh] w-[40vh]'>
             <img src={Logo} alt="Logo" className='h-full w-full object-contain' />
         </div>
-        <div className='h-[8vh] w-[40vh] flex items-center justify-center gap-9 text-white font-bold text-[2vh] rounded'>
-            <p className='hover:text-gray-200 transition-colros duration-300'>Home</p>
-            <p className='hover:text-gray-200 transition-colros duration-300'>Guide</p>
-            <p className='hover:text-gray-200 transition-colros duration-300'>Privacy Statement</p>
-            <div className='w-[7vh] border-l border-white flex justify-end'>
-            <span className="material-symbols-outlined">
+        <div className='h-[8vh] w-[50vh] flex items-center justify-center gap-9 text-white font-bold text-[18px] rounded'>
+            <p className='hover:text-gray-200 transition-colors duration-300' onClick={() => navigate('/')}>Home</p>
+            <p className='hover:text-gray-200 transition-colors duration-300'>Guide</p>
+            <p className='hover:text-gray-200 transition-colors duration-300'>Privacy Statement</p>
+            <div className='w-[10vh] border-l border-white flex justify-end flex items-center justify-end gap-1'>
+            <span className="mt-1 material-symbols-outlined">
                 person
             </span>
             <p onClick={() => navigate('/login')}>Log In</p>

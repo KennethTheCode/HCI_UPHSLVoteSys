@@ -106,7 +106,7 @@ function EditCandidate() {
         <div>
             <button
                 onClick={() => setShowModal(true)}
-                className='bg-green-500 text-white font-bold px-4 py-2 rounded hover:bg-green-700 transition-colors duration-300'>
+                className='bg-green-500 text-white font-bold px-3 py-1 rounded hover:bg-green-700 transition-colors duration-300'>
                 Edit Candidate
             </button>
 

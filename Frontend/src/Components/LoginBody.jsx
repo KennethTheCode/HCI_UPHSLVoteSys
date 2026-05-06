@@ -58,14 +58,14 @@ function LoginBody() {
                 <div className='w-full h-[7vh] flex'>
                     <img src={Logo} alt="Logo" className='h-[7vh] object-contain' />
                 </div>
-                    <h1 className='font-bold text-[8vh] text-white font-Oswald'>Welcome to UPHSL Online<br></br>Voting System</h1>
+                    <h1 className='font-bold text-[6vh] text-white font-Oswald'>Welcome to UPHSL Online<br></br>Voting System</h1>
                     <div className='w-[80%]'>
-                    <p className='text-[2vh] text-white font-Oswald'>Experience a secure and transparent voting process with our online system</p>
-                    <p className='text-[1.5vh] text-gray-300 font-Oswald'>This system is designed to provide a secure and efficient way for students to participate in the electoral process, ensuring that their voices are heard and their votes are counted accurately.</p>
+                    <p className='text-[22px] text-white font-Oswald'>Experience a secure and transparent voting process with our online system</p>
+                    <p className='text-[14px] text-gray-300 font-Oswald'>This system is designed to provide a secure and efficient way for students to participate in the electoral process, ensuring that their voices are heard and their votes are counted accurately.</p>
                 </div>
             </div>
 
-            <div className='bg-white rounded-[3%] w-[40%] border-2 border-gray-100 shadow-2xl h-full flex flex-col items-center text-center'>
+            <div className='bg-white rounded-[3%] w-[40%] border-2 border-gray-100 shadow-2xl h-full flex flex-col items-center text-center px-15'>
                 <div className='h-[25vh] flex items-center justify-center m'>
                     <img src={Pen} alt="Logo" className='h-full object-contain' />
                 </div>

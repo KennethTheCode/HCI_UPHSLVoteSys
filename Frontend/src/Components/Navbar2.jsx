@@ -1,23 +1,95 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../Images/logo.png'
 import { useNavigate } from 'react-router-dom'
 
 function Navbar2() {
-const navigate = useNavigate();
+  const navigate = useNavigate()
+
+  // ✅ state for logout popup
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false)
+
+  const handleLogout = () => {
+    // clear stored user data
+    localStorage.removeItem('userEmail')
+
+    // redirect to login
+    navigate('/login')
+  }
+
   return (
- <div className='flex items-center justify-center bg-gradient-to-r from-blue-950 via-blue-900 to-blue-900 w-full h-[5vh] pl-[13%] pr-[15%] border-b-10 border-yellow-400'>
-        <div className='h-[8vh] w-[40vh] flex items-center justify-center gap-7 text-white font-bold text-[2vh] rounded'>
-            <p className='hover:text-gray-200 transition-colros duration-300' onClick={() => navigate('/admin')}>Home</p>
-            <p className='hover:text-gray-200 transition-colros duration-300'>Guide</p>
-            <p className='hover:text-gray-200 transition-colros duration-300'>Privacy Statement</p>
-            <div className='w-[9vh] border-l border-white flex justify-end'>
-                <span className="material-symbols-outlined">
-                    person
-                </span>
-                <p className='hover:text-gray-200 transition-colors duration-300' onClick={() => navigate('/login')}>Log Out</p>
-            </div>
+    <>
+      <div className='flex items-center justify-center bg-gradient-to-r from-blue-950 via-blue-900 to-blue-900 w-full h-[5vh] pl-[13%] pr-[15%] border-b-10 border-yellow-400'>
+        <div className='h-[8vh] w-[50vh] flex items-center justify-center gap-7 text-white font-bold text-[15px] rounded'>
+          
+          <p
+            className='hover:text-gray-200 transition-colors duration-300 cursor-pointer'
+            onClick={() => navigate('/admin')}>
+            Home
+          </p>
+
+          <p
+            className='hover:text-gray-200 transition-colors duration-300 cursor-pointer'
+            onClick={() => navigate('/guide')}>
+            Guide
+          </p>
+
+          <p
+            className='hover:text-gray-200 transition-colors duration-300 cursor-pointer'
+            onClick={() => navigate('/privacy')}>
+            Privacy Statement
+          </p>
+
+          <div className='w-[12vh] border-l border-white flex items-center justify-end gap-1'>
+            <span className="material-symbols-outlined">
+              person
+            </span>
+
+            <p
+              className='hover:text-gray-200 transition-colors duration-300 cursor-pointer'
+              onClick={() => setShowLogoutPopup(true)}
+>
+              Log Out
+            </p>
+          </div>
         </div>
-    </div>  )
+      </div>
+
+      {showLogoutPopup && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl shadow-xl p-6 w-[320px] text-center">
+            
+            <h2 className="text-lg font-bold text-red-600 mb-3">
+              Confirm Logout
+            </h2>
+
+            <p className="text-gray-700 mb-5">
+              Are you sure you want to log out?
+            </p>
+
+            <div className="flex justify-center gap-4">
+              
+              {/* Cancel */}
+              <button
+                className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300 transition"
+                onClick={() => setShowLogoutPopup(false)}
+              >
+                Cancel
+              </button>
+
+              {/* Confirm */}
+              <button
+                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+                onClick={handleLogout}
+              >
+                Yes, Logout
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  )
 }
 
 export default Navbar2

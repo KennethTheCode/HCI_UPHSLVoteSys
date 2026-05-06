@@ -56,8 +56,10 @@ function AddPosition() {
     return (
         <div>
             <button
-                className='bg-red-500 text-white font-bold px-4 py-2 rounded hover:bg-red-700 transition-colors duration-300'
-                onClick={() => setShowModal(true)}>
+                className='bg-red-500 text-white font-bold px-3 py-1 rounded hover:bg-red-700 transition-colors duration-300'
+                onClick={() => {
+                    setShowModal(true);
+                }}>
                 Add Position
             </button>
             {showModal && (

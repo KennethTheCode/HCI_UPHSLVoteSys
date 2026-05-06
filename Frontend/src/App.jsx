@@ -6,6 +6,7 @@ import Admin from './Pages/Admin'
 import Register from './Pages/Register'
 import VoterPage from './Pages/VoterPage'
 import VoteSummary from './Components/VoteSummary'
+import ArchiveList from './Pages/ArchiveList'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/admin" element={<Admin />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/archive" element={<ArchiveList />} />
           <Route path="/voter" element={<VoterPage />} />
           <Route path="/vote-summary" element={<VoteSummary />} />
         </Routes>
