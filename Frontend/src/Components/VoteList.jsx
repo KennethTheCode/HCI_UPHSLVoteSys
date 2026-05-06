@@ -16,14 +16,11 @@ function VoteList({ selectedVotes }) {
                 ) : (
                     voteEntries.map(([position, candidate]) => (
                         <div key={position} className='p-3 bg-white shadow-lg rounded-lg'>
-                            <div className='flex items-center gap-3'>
-                                <div className='border border-gray-400 w-[18%] h-[70px] rounded-full overflow-hidden flex items-center justify-center'>
-                                    <img src={candidate.img || 'default.png'} alt={candidate.name} className='h-full w-full object-cover' />
-                                </div>
-                                <div className='text-left'>
-                                    <p className='text-blue-950 font-bold'>{position}</p>
-                                    <p className='text-gray-700'>{candidate.name}</p>
-                                    <span className='text-gray-500 bg-green-200 px-2 py-1 text-[12px] rounded-lg inline-block mt-1'>
+                            <div className='flex justify-center items-center gap-3'>
+                                <div className='text-center'>
+                                    <p className='text-blue-950 font-bold text-[15px]'>{position}</p>
+                                    <p className='text-gray-700 font-semibold text-[13px]'>{candidate.name}</p>
+                                    <span className='text-gray-500 bg-green-200 px-2 py-1 text-[9px] rounded-lg inline-block mt-1'>
                                         {candidate.party || 'No Party'}
                                     </span>
                                 </div>

@@ -1,3 +1,4 @@
+import re
 from datetime import datetime
 
 from fastapi import FastAPI, APIRouter, HTTPException
@@ -59,8 +60,19 @@ async def view_positions():
 @router.post("/positions")
 async def create_position(new_position: Positions):
     try:
+        existing_position = positions.find_one({
+            "position": {
+                "$regex": f"^{re.escape(new_position.position)}$",
+                "$options": "i"
+            }
+        })
+        if existing_position:
+            raise HTTPException(status_code=400, detail="Position already exists")
+
         resp = positions.insert_one(new_position.model_dump())
         return {"status": 200, "id": str(resp.inserted_id)}
+    except HTTPException:
+        raise
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Some error: {e}")
 
@@ -199,7 +211,6 @@ async def submit_vote(vote_submission: VoteSubmission):
         if existing_vote:
             raise HTTPException(status_code=400, detail="User has already submitted a vote")
 
-        # Store each vote (position->candidate pair)
         vote_entries = []
         for position_name, candidate in vote_submission.votes.items():
             vote_doc = {

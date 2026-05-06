@@ -61,7 +61,7 @@ function VoterBody({ selectedVotes, onSelectCandidate, onSubmitVotes, submitting
     }
 
     return (
-        <div className='w-[74%] bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto'>
+        <div className='w-[68%] bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto flex flex-col items-center  text-center'>
             {positions.length === 0 ? (
                 <div className='text-center'>
                     <p className='text-blue-950 text-xl'>No positions found</p>
@@ -73,7 +73,7 @@ function VoterBody({ selectedVotes, onSelectCandidate, onSubmitVotes, submitting
                         <div key={position.id || index} className='mb-6'>
                             <h1 className='text-[24px] font-bold mb-3 text-blue-950'>{position.position}</h1>
                             
-                            <div className='w-full h-[23vh] overflow-y-auto grid grid-cols-5 gap-4'>
+                            <div className='w-full h-[23vh] overflow-y-auto grid grid-cols-3 gap-4'>
                                 
                                 {positionCandidates.length === 0 ? (
                                     <div className='col-span-5 text-center py-4'>
