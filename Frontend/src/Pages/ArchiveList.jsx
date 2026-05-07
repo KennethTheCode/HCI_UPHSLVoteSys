@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar2 from '../Components/Navbar2'
-import PageHeader2 from '../Components/PageHeader2';
+import PageHeader3 from '../Components/PageHeader3';
 import ControlPanel from '../Components/ControlPanel';
 
 function ArchiveList() {
@@ -67,7 +67,7 @@ function ArchiveList() {
   return (
     <div>
       <Navbar2 />
-      <PageHeader2 Header="Archived Candidates" />
+      <PageHeader3 Header="Archived Candidates" />
       <ControlPanel />
 
       <div className='mx-56 py-8 h-[90vh] overflow-y-auto'>

@@ -5,6 +5,7 @@ import AddCandidate from './ControlPanelButtons/AddCandidate';
 import ArchiveCandidate from './ControlPanelButtons/ArchiveCandidate';
 import EditCandidate from './ControlPanelButtons/EditCandidate';
 import ShowVoteSummary from './ControlPanelButtons/ShowVoteSummary';
+import RemovePosition from './ControlPanelButtons/RemovePosition';
 
 function ControlPanel() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function ControlPanel() {
             <AddCandidate />
             <ArchiveCandidate />
             <EditCandidate />
+            <RemovePosition />
         </div>
         <div className='flex gap-3'>
             <ShowVoteSummary />

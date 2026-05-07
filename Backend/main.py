@@ -76,6 +76,33 @@ async def create_position(new_position: Positions):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Some error: {e}")
 
+@router.delete("/positions/{position_id}")
+async def delete_position(position_id: str):
+    try:
+        try:
+            position_obj_id = ObjectId(position_id)
+        except InvalidId:
+            raise HTTPException(status_code=400, detail="Invalid position ID")
+
+        position = positions.find_one({"_id": position_obj_id})
+        if not position:
+            raise HTTPException(status_code=404, detail="Position not found")
+
+        positions.delete_one({"_id": position_obj_id})
+        candidates.delete_many({"position": position["position"]})
+        archive_candidates.delete_many({"position": position["position"]})
+        votes.delete_many({"position": position["position"]})
+
+        return {
+            "status": 200,
+            "id": position_id,
+            "message": "Position and related candidates/votes removed"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Some error: {e}")
+
 # Get all candidates
 @app.get("/candidates")
 async def view_candidates():
@@ -183,7 +210,6 @@ async def authenticate_user(user_login: UserLogin):
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
 
-        # ✅ Check password
         if user["password"] != user_login.password:
             raise HTTPException(status_code=401, detail="Invalid credentials")
 

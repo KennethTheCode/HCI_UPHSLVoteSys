@@ -27,18 +27,6 @@ function Navbar2() {
             Home
           </p>
 
-          <p
-            className='hover:text-gray-200 transition-colors duration-300 cursor-pointer'
-            onClick={() => navigate('/guide')}>
-            Guide
-          </p>
-
-          <p
-            className='hover:text-gray-200 transition-colors duration-300 cursor-pointer'
-            onClick={() => navigate('/privacy')}>
-            Privacy Statement
-          </p>
-
           <div className='w-[12vh] border-l border-white flex items-center justify-end gap-1'>
             <span className="material-symbols-outlined">
               person

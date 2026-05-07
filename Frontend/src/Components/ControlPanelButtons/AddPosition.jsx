@@ -7,9 +7,11 @@ function AddPosition() {
         image: ''
     });
     const [previewUrl, setPreviewUrl] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
     const handleInput = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+        setErrorMessage('')
     }
 
     const handleFileChange = (e) => {
@@ -35,6 +37,9 @@ function AddPosition() {
                 body: JSON.stringify(form),
             });
 
+            const data = await res.json();
+            console.log(data);
+
             if (res.ok) {
                 alert('Position added successfully!');
                 setForm({
@@ -43,13 +48,14 @@ function AddPosition() {
                 });
                 setPreviewUrl('')
                 setShowModal(false);
+            } else if (res.status === 400 && data.detail?.toLowerCase().includes('position already exists')) {
+                setErrorMessage('Position already exists. Please choose a different name.')
             } else {
-                alert('Failed to add position.');
+                setErrorMessage(data.detail || 'Failed to add position.')
             }
-            const data = await res.json();
-            console.log(data);
         } catch (error) {
             console.error('Error:', error);
+            setErrorMessage('An unexpected error occurred. Please try again.')
         }
     }
 
@@ -76,7 +82,9 @@ function AddPosition() {
                                 onChange={handleInput}
                                 required
                             />
-                          
+                            {errorMessage && (
+                                <p className='text-red-500 text-sm mb-4'>{errorMessage}</p>
+                            )}
                             <button type='submit' className='bg-red-500 text-white font-bold px-4 py-2 rounded hover:bg-red-700 transition-colors duration-300'>Submit</button>
                             <button
                                 type='button'

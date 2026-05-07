@@ -101,7 +101,7 @@ function VoteSummary() {
     <div>
       <Navbar2 />
       <PageHeader2 Header="Vote Summary" />
-      <div className='px-56 py-8'>
+      <div className='px-56 py-8 h-[90vh] overflow-y-auto'>
         <div className='bg-white rounded-lg shadow-lg p-6 mb-6'>
           <h2 className='text-2xl font-bold text-blue-950 mb-4'>Election Results</h2>
           <p className='text-lg text-gray-700 mb-6'>Total Votes Cast: <span className='font-bold text-blue-600'>{totalVotes}</span></p>

@@ -46,7 +46,7 @@ function VoterBody({ selectedVotes, onSelectCandidate, onSubmitVotes, submitting
 
     if (loading) {
         return (
-            <div className='mx-83 bg-gray-300 rounded-[5px] h-[50vh] p-5 flex items-center justify-center'>
+            <div className='mx-83 bg-gray-300 rounded-[5px] w-[69%] h-[50vh] p-5 flex items-center justify-center'>
                 <p className='text-blue-950 text-xl'>Loading positions and candidates...</p>
             </div>
         );
@@ -54,14 +54,14 @@ function VoterBody({ selectedVotes, onSelectCandidate, onSubmitVotes, submitting
 
     if (error) {
         return (
-            <div className='mx-83 bg-gray-300 rounded-[5px] h-[50vh] p-5 flex items-center justify-center'>
+            <div className='mx-83 bg-gray-300 rounded-[5px] w-[69%] h-[50vh] p-5 flex items-center justify-center'>
                 <p className='text-red-500 text-xl'>Error: {error}</p>
             </div>
         );
     }
 
     return (
-        <div className='w-[68%] bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto flex flex-col items-center  text-center'>
+        <div className='w-[69%] bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto flex flex-col items-center  text-center'>
             {positions.length === 0 ? (
                 <div className='text-center'>
                     <p className='text-blue-950 text-xl'>No positions found</p>
