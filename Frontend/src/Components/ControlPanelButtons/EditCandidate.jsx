@@ -4,16 +4,30 @@ function EditCandidate() {
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [previewUrl, setPreviewUrl] = useState('');
 
     const [form, setForm] = useState({
         candidateId: '',
         candidateName: '',
         candidatePosition: '',
-        candidateParty: ''
+        candidateParty: '',
+        candidateImage: ''
     });
 
     const handleInput = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setForm({ ...form, candidateImage: reader.result });
+            setPreviewUrl(reader.result);
+        };
+        reader.readAsDataURL(file);
     };
 
     const fetchCandidate = async () => {
@@ -45,8 +59,10 @@ function EditCandidate() {
                     candidateId: candidate.id,
                     candidateName: candidate.name,
                     candidatePosition: candidate.position,
-                    candidateParty: candidate.party
+                    candidateParty: candidate.party,
+                    candidateImage: candidate.img || ''
                 });
+                setPreviewUrl(candidate.img || '');
                 setError('');
             }
         } catch (err) {
@@ -68,7 +84,8 @@ function EditCandidate() {
         const updateData = {
             name: form.candidateName,
             position: form.candidatePosition,
-            party: form.candidateParty
+            party: form.candidateParty,
+            img: form.candidateImage
         };
 
         try {
@@ -90,8 +107,10 @@ function EditCandidate() {
                     candidateId: '',
                     candidateName: '',
                     candidatePosition: '',
-                    candidateParty: ''
+                    candidateParty: '',
+                    candidateImage: ''
                 });
+                setPreviewUrl('');
                 window.location.reload();
             } else {
                 setError(data.detail || 'Failed to update candidate.');
@@ -162,6 +181,17 @@ function EditCandidate() {
                                 placeholder='Candidate Party...'
                                 className='w-full border-b border-gray-300 px-3 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500'
                             />
+
+                            <label className='block text-sm font-medium text-gray-700 mb-2'>Candidate Image</label>
+                            <input
+                                type='file'
+                                accept='image/*'
+                                onChange={handleFileChange}
+                                className='w-full mb-4'
+                            />
+                            {previewUrl && (
+                                <img src={previewUrl} alt='Candidate preview' className='mb-4 h-24 w-full object-cover rounded-lg border border-gray-200' />
+                            )}
 
                             <div className='mt-3'>
                                 <button
