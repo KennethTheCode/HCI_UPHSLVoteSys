@@ -48,7 +48,7 @@ function RegForm() {
                 <form onSubmit={handleSubmit}>
                     <div className='flex flex-col gap-7 mt-5'>
                         <input 
-                        type="text" 
+                        type="email" 
                         name="email" 
                         value={form.email}
                         placeholder='Email...' 
