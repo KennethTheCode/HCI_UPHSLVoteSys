@@ -21,10 +21,10 @@ function ControlPanel() {
         </div>
         <div className='flex gap-3'>
             <ShowVoteSummary />
-            <button className='bg-blue-500 text-white font-bold px-3 py-1 rounded hover:bg-blue-700 transition-colors duration-300' onClick={() => navigate('/register')}>
+            <button className='bg-blue-500 text-white font-bold text-[13px] px-2 py-1 rounded hover:bg-blue-700 transition-colors duration-300' onClick={() => navigate('/register')}>
                 Register Users
             </button>
-            <button className='bg-yellow-500 text-white font-bold px-3 py-1 rounded hover:bg-yellow-700 transition-colors duration-300' onClick={() => navigate('/archive')}>
+            <button className='bg-yellow-500 text-white font-bold text-[13px] px-2 py-1 rounded hover:bg-yellow-700 transition-colors duration-300' onClick={() => navigate('/archive')}>
                 Show Archive List
             </button>
         </div>

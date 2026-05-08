@@ -62,7 +62,7 @@ function AddPosition() {
     return (
         <div>
             <button
-                className='bg-red-500 text-white font-bold px-3 py-1 rounded hover:bg-red-700 transition-colors duration-300'
+                className='bg-red-500 text-white font-bold text-[13px] px-2 py-1 rounded hover:bg-red-700 transition-colors duration-300'
                 onClick={() => {
                     setShowModal(true);
                 }}>

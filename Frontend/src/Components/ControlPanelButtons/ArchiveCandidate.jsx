@@ -40,7 +40,7 @@ function ArchiveCandidate() {
 
     return (
         <div>
-            <button className='bg-yellow-500 text-white font-bold px-3 py-1 rounded hover:bg-yellow-700 transition-colors duration-300'
+            <button className='bg-yellow-500 text-white font-bold text-[13px] px-2 py-1 rounded hover:bg-yellow-700 transition-colors duration-300'
                 onClick={() => setShowModal(true)}>
                 Archive Candidate
             </button>

@@ -64,7 +64,7 @@ function RemovePosition() {
   return (
     <div>
       <button
-        className='bg-purple-500 text-white font-bold px-3 py-1 rounded hover:bg-purple-700 transition-colors duration-300'
+        className='bg-purple-500 text-white font-bold text-[13px] px-2 py-1 rounded hover:bg-purple-700 transition-colors duration-300'
         onClick={() => setShowModal(true)}>
         Remove Position
       </button>
