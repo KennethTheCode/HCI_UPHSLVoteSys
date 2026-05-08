@@ -4,6 +4,7 @@ import PageHeader from '../Components/PageHeader'
 import PageHeader3 from '../Components/PageHeader3'
 import ControlPanel from '../Components/ControlPanel'
 import AdminBody from '../Components/AdminBody'
+import Dashboard from '../Components/Dashboard'
 import Test from './Test'
 function Admin() {
   return (
@@ -12,6 +13,7 @@ function Admin() {
         <PageHeader3 Header="Admin Panel" />
         <ControlPanel />
         <AdminBody />
+        <Dashboard />
     </div>
   )
 }

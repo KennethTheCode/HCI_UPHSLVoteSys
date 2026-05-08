@@ -61,7 +61,7 @@ function VoterBody({ selectedVotes, onSelectCandidate, onSubmitVotes, submitting
     }
 
     return (
-        <div className='w-[69%] bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto flex flex-col items-center  text-center'>
+        <div className='w-[55%] bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto flex flex-col items-center  text-center'>
             {positions.length === 0 ? (
                 <div className='text-center'>
                     <p className='text-blue-950 text-xl'>No positions found</p>

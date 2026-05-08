@@ -18,6 +18,7 @@ function VoterPage() {
   const navigate = useNavigate()
   const userEmail = localStorage.getItem('userEmail')
 
+  // ✅ Select candidate
   const handleSelectCandidate = (positionName, candidate) => {
     setSelectedVotes((prev) => ({
       ...prev,
@@ -25,6 +26,16 @@ function VoterPage() {
     }))
   }
 
+  // ✅ Remove selected vote
+  const removeVote = (positionName) => {
+    setSelectedVotes((prev) => {
+      const updatedVotes = { ...prev }
+      delete updatedVotes[positionName]
+      return updatedVotes
+    })
+  }
+
+  // ✅ Submit votes
   const handleSubmitVotes = async () => {
     const voteEntries = Object.entries(selectedVotes)
 
@@ -62,6 +73,8 @@ function VoterPage() {
         // ✅ show popup instead of alert
         setPopupMessage(`Vote submitted successfully!\n\n${summary}`)
         setShowPopup(true)
+
+        // ✅ clear votes
         setSelectedVotes({})
 
         // ✅ redirect after 2 seconds
@@ -86,8 +99,15 @@ function VoterPage() {
       <PageHeader />
       <PageHeader2 Header={"University Student Council"} />
 
-      <div className='flex'>
-        <VoteList selectedVotes={selectedVotes} />
+      <div className='flex w-full justify-center p-5 '>
+        
+        {/* ✅ Vote List */}
+        <VoteList 
+          selectedVotes={selectedVotes}
+          removeVote={removeVote}
+        />
+
+        {/* ✅ Voting Area */}
         <VoterBody
           selectedVotes={selectedVotes}
           onSelectCandidate={handleSelectCandidate}
@@ -98,9 +118,11 @@ function VoterPage() {
 
       <Footer />
 
+      {/* ✅ Success Popup */}
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-xl p-6 w-[350px] text-center">
+            
             <h2 className="text-xl font-bold text-green-600 mb-3">
               Success
             </h2>
@@ -112,6 +134,7 @@ function VoterPage() {
             <p className="text-sm text-gray-400 mt-4">
               Redirecting to login...
             </p>
+
           </div>
         </div>
       )}

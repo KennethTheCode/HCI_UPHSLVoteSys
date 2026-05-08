@@ -57,7 +57,7 @@ function AdminBody() {
     }
 
     return (
-        <div className='mx-55 bg-gray-300 rounded-[5px] h-[90vh] p-5 overflow-y-auto'>
+        <div className='mx-55 bg-gray-200 p-5 rounded-[5px] h-[90vh]  overflow-y-auto flex flex-col items-start justify-center'>
             {positions.length === 0 ? (
                 <div className='text-center'>
                     <p className='text-blue-950 text-xl'>No positions found</p>
