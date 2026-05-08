@@ -7,13 +7,20 @@ function RegForm() {
         program: '',
         password: '',
     });
+    const [error, setError] = useState('');
 
     const handleInput = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value});
+        if (error) setError('');
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!form.email || !form.program || !form.password) {
+            setError('Please fill out all inputs first');
+            return;
+        }
+
         try {
             const res = await fetch('http://localhost:8000/users', {
                 method: 'POST',
@@ -71,12 +78,15 @@ function RegForm() {
                         className='border-b border-gray-300  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500' 
                         onChange={handleInput} />
 
-                        <button 
+                                <button 
                         type="submit" 
                         className='bg-blue-500 text-white font-bold px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-300'>
                             Register
                         </button>
                     </div>
+                    {error && (
+                        <p className='mt-4 text-sm text-red-600 font-medium'>Please fill out all inputs first</p>
+                    )}
                 </form>
             </div>
   )
