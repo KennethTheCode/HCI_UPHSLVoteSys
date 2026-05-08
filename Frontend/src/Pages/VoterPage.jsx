@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Navbar2 from '../Components/Navbar2'
+import Navbar3 from '../Components/Navbar3'
 import PageHeader from '../Components/PageHeader'
 import PageHeader2 from '../Components/PageHeader2'
 import VoterBody from '../Components/VoterBody'
@@ -82,7 +82,7 @@ function VoterPage() {
 
   return (
     <div>
-      <Navbar2 />
+      <Navbar3 />
       <PageHeader />
       <PageHeader2 Header={"University Student Council"} />
 
