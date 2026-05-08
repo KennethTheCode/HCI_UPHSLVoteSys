@@ -76,7 +76,7 @@ function VoteSummary() {
       <div>
         <Navbar2 />
         <PageHeader2 Header="Vote Summary" />
-        <div className='min-h-[60vh] flex items-center justify-center'>
+        <div className='min-h-[90vh] flex items-center justify-center'>
           <p className='text-blue-950 text-xl'>Loading vote summary...</p>
         </div>
         <Footer />
@@ -89,7 +89,7 @@ function VoteSummary() {
       <div>
         <Navbar2 />
         <PageHeader2 Header="Vote Summary" />
-        <div className='min-h-[60vh] flex items-center justify-center'>
+        <div className='min-h-[90vh] flex items-center justify-center'>
           <p className='text-red-500 text-xl'>Error: {error}</p>
         </div>
         <Footer />

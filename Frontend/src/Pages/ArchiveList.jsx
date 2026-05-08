@@ -8,6 +8,13 @@ function ArchiveList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [unarchivingId, setUnarchivingId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredCandidates = archivedCandidates.filter(candidate =>
+    candidate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    candidate.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    candidate.party.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     fetchArchivedCandidates();
@@ -70,8 +77,8 @@ function ArchiveList() {
       <PageHeader3 Header="Archived Candidates" />
       <ControlPanel />
 
-      <div className='mx-56 py-8 h-[90vh] overflow-y-auto'>
-        <div className='h-full bg-white rounded-lg shadow-lg p-6'>
+      <div className='mx-56 py-8 h-[90vh] '>
+        <div className='h-full bg-white rounded-lg shadow-lg p-6 overflow-y-auto'>
           <h1 className='text-3xl font-bold text-blue-950 mb-6'>Archived Candidates</h1>
           
           {error && (
@@ -80,9 +87,29 @@ function ArchiveList() {
             </div>
           )}
 
-          {archivedCandidates.length === 0 ? (
+          <div className='mb-6 flex gap-4'>
+            <input
+              type='text'
+              placeholder='Search by name, position, or party...'
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className='flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+            />
+            <button
+              onClick={() => setSearchTerm('')}
+              className='bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded transition-colors duration-200'
+            >
+              Clear
+            </button>
+          </div>
+
+          {filteredCandidates.length === 0 ? (
             <div className='text-center py-12'>
-              <p className='text-gray-500 text-lg'>No archived candidates found.</p>
+              <p className='text-gray-500 text-lg'>
+                {archivedCandidates.length === 0 
+                  ? 'No archived candidates found.' 
+                  : 'No candidates match your search.'}
+              </p>
             </div>
           ) : (
             <div className='overflow-x-auto'>
@@ -96,7 +123,7 @@ function ArchiveList() {
                   </tr>
                 </thead>
                 <tbody>
-                  {archivedCandidates.map((candidate) => (
+                  {filteredCandidates.map((candidate) => (
                     <tr key={candidate.id} className='hover:bg-gray-50 transition-colors'>
                       <td className='border border-gray-300 px-4 py-3 font-semibold text-gray-800'>{candidate.name}</td>
                       <td className='border border-gray-300 px-4 py-3 text-gray-700'>{candidate.position}</td>

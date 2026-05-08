@@ -46,16 +46,6 @@ function UsersTable() {
         }
     }
 
-    if (loading) {
-        return (
-            <div className='bg h-full w-full p-5'>
-                <div className='mt-5 text-center'>
-                    <p className='text-blue-950 text-xl'>Loading users...</p>
-                </div>
-            </div>
-        )
-    }
-
     if (error) {
         return (
             <div className='bg h-full w-full p-5'>
