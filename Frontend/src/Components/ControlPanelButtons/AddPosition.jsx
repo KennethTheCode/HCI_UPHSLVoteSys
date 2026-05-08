@@ -46,7 +46,9 @@ function AddPosition() {
                     position: '',
                     image: ''
                 });
+                
                 setPreviewUrl('')
+                window.location.reload();
                 setShowModal(false);
             } else if (res.status === 400 && data.detail?.toLowerCase().includes('position already exists')) {
                 setErrorMessage('Position already exists. Please choose a different name.')

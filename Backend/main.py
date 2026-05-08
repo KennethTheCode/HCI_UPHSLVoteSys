@@ -51,6 +51,31 @@ async def create_user(new_user: Users):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Some error: {e}")
 
+@router.delete("/users/{user_id}")
+async def delete_user(user_id: str):
+    try:
+        try:
+            user_obj_id = ObjectId(user_id)
+        except InvalidId:
+            raise HTTPException(status_code=400, detail="Invalid user ID")
+
+        user = collection.find_one({"_id": user_obj_id})
+        if not user:
+            raise HTTPException(status_code=404, detail="User not found")
+
+        collection.delete_one({"_id": user_obj_id})
+        votes.delete_many({"user_email": user["email"]})
+
+        return {
+            "status": 200,
+            "id": user_id,
+            "message": "User and related votes removed"
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Some error: {e}")
+
 # Get all positions
 @app.get("/positions")
 async def view_positions():

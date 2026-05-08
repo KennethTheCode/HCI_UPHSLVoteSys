@@ -24,6 +24,28 @@ function UsersTable() {
         fetchUsers()
     }, [])
 
+    const handleDeleteUser = async (userId, userEmail) => {
+        const confirmed = window.confirm(`Are you sure you want to delete user "${userEmail}"? This will also remove their votes.`)
+        if (!confirmed) return
+
+        try {
+            const response = await fetch(`http://localhost:8000/users/${userId}`, {
+                method: 'DELETE'
+            })
+
+            if (response.ok) {
+                setUsers(users.filter(user => user.id !== userId))
+                alert('User deleted successfully!')
+            } else {
+                const errorData = await response.json()
+                alert(`Failed to delete user: ${errorData.detail || 'Unknown error'}`)
+            }
+        } catch (error) {
+            console.error('Error deleting user:', error)
+            alert('An error occurred while deleting the user.')
+        }
+    }
+
     if (loading) {
         return (
             <div className='bg h-full w-full p-5'>
@@ -63,6 +85,7 @@ function UsersTable() {
                                     <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>Program</th>
                                     <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>Created At</th>
                                     <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>Updated At</th>
+                                    <th className='px-6 py-3 text-left text-xs font-medium uppercase tracking-wider'>Actions</th>
                                 </tr>
                             </thead>
                             <tbody className='bg-white divide-y divide-gray-200 '>
@@ -76,6 +99,14 @@ function UsersTable() {
                                         </td>
                                         <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
                                             {user.updated_at ? new Date(user.updated_at).toLocaleDateString() : 'N/A'}
+                                        </td>
+                                        <td className='px-6 py-4 whitespace-nowrap text-sm text-gray-900'>
+                                            <button
+                                                onClick={() => handleDeleteUser(user.id, user.email)}
+                                                className='bg-red-500 text-white px-3 py-1 rounded hover:bg-red-700 transition-colors duration-300'
+                                            >
+                                                Delete
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
