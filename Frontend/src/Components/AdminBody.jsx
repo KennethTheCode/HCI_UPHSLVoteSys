@@ -42,7 +42,7 @@ function AdminBody() {
 
     if (loading) {
         return (
-            <div className='mx-83 bg-gray-300 rounded-[5px] h-[90vh] p-5 flex items-center justify-center'>
+            <div className='mx-83  rounded-[5px] h-[90vh] p-5 flex items-center justify-center'>
                 <p className='text-blue-950 text-xl'>Loading positions and candidates...</p>
             </div>
         );
@@ -50,7 +50,7 @@ function AdminBody() {
 
     if (error) {
         return (
-            <div className='mx-83 bg-gray-300 rounded-[5px] h-[90vh] p-5 flex items-center justify-center'>
+            <div className='mx-83  rounded-[5px] h-[90vh] p-5 flex items-center justify-center'>
                 <p className='text-red-500 text-xl'>Error: {error}</p>
             </div>
         );

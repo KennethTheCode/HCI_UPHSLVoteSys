@@ -64,7 +64,7 @@ function ArchiveList() {
     return (
       <div>
         <Navbar2 />
-        <div className='min-h-[80vh] flex items-center justify-center'>
+        <div className='min-h-[100vh] flex items-center justify-center'>
           <p className='text-blue-950 text-xl'>Loading archived candidates...</p>
         </div>
       </div>
